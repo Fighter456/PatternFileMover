@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.quellverzeichnisAuswählenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +46,18 @@
             // 
             // konfigurationToolStripMenuItem
             // 
+            this.konfigurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.quellverzeichnisAuswählenToolStripMenuItem});
             this.konfigurationToolStripMenuItem.Name = "konfigurationToolStripMenuItem";
             this.konfigurationToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.konfigurationToolStripMenuItem.Text = "Konfiguration";
+            // 
+            // quellverzeichnisAuswählenToolStripMenuItem
+            // 
+            this.quellverzeichnisAuswählenToolStripMenuItem.Name = "quellverzeichnisAuswählenToolStripMenuItem";
+            this.quellverzeichnisAuswählenToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.quellverzeichnisAuswählenToolStripMenuItem.Text = "Quellverzeichnis auswählen";
+            this.quellverzeichnisAuswählenToolStripMenuItem.Click += new System.EventHandler(this.quellverzeichnisAuswählenToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -71,6 +81,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem quellverzeichnisAuswählenToolStripMenuItem;
     }
 }
 
