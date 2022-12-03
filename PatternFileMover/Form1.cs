@@ -51,5 +51,10 @@ namespace PatternFileMover
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
+
+        private void zuordnungenBearbeitenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new NameAssociationsForm().ShowDialog();
+        }
     }
 }

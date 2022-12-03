@@ -32,6 +32,7 @@
             this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quellverzeichnisAuswählenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.zuordnungenBearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -49,7 +50,8 @@
             // konfigurationToolStripMenuItem
             // 
             this.konfigurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quellverzeichnisAuswählenToolStripMenuItem});
+            this.quellverzeichnisAuswählenToolStripMenuItem,
+            this.zuordnungenBearbeitenToolStripMenuItem});
             this.konfigurationToolStripMenuItem.Name = "konfigurationToolStripMenuItem";
             this.konfigurationToolStripMenuItem.Size = new System.Drawing.Size(92, 20);
             this.konfigurationToolStripMenuItem.Text = "Konfiguration";
@@ -71,6 +73,13 @@
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(776, 216);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // zuordnungenBearbeitenToolStripMenuItem
+            // 
+            this.zuordnungenBearbeitenToolStripMenuItem.Name = "zuordnungenBearbeitenToolStripMenuItem";
+            this.zuordnungenBearbeitenToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
+            this.zuordnungenBearbeitenToolStripMenuItem.Text = "Zuordnungen bearbeiten";
+            this.zuordnungenBearbeitenToolStripMenuItem.Click += new System.EventHandler(this.zuordnungenBearbeitenToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -98,6 +107,7 @@
         private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quellverzeichnisAuswählenToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ToolStripMenuItem zuordnungenBearbeitenToolStripMenuItem;
     }
 }
 

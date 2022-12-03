@@ -24,5 +24,10 @@ namespace PatternFileMover
 
             return true;
         }
+
+        public static List<NameAssociationsData> LoadFromExistingConfigFile()
+        {
+            return JsonConvert.DeserializeObject<List<NameAssociationsData>>(File.ReadAllText(Path.GetFullPath(configPath)));
+        }
     }
 }
