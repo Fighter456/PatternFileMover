@@ -27,6 +27,9 @@ namespace PatternFileMover
 
             if (result == DialogResult.OK)
             {
+                // clear grid
+                dataGridView1.Rows.Clear();
+
                 this.sourceDirectory = sourceFolderBrowserDialog.SelectedPath;
 
                 string[] files = Directory.GetFiles(this.sourceDirectory, "*.pdf");
