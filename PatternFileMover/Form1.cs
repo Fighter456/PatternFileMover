@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PatternFileMover
@@ -11,6 +12,13 @@ namespace PatternFileMover
         public Form1()
         {
             InitializeComponent();
+
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            dataGridView1.ColumnCount = 1;
+            dataGridView1.RowHeadersVisible = false;
+
+            dataGridView1.Columns[0].Name = "Dateiname";
+            dataGridView1.Columns[0].Width = 773;
         }
 
         private void quellverzeichnisAuswählenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -20,6 +28,15 @@ namespace PatternFileMover
             if (result == DialogResult.OK)
             {
                 this.sourceDirectory = sourceFolderBrowserDialog.SelectedPath;
+
+                string[] files = Directory.GetFiles(this.sourceDirectory, "*.pdf");
+                foreach (string file in files)
+                {
+                    dataGridView1.Rows.Add(file);
+                }
+
+                dataGridView1.AutoResizeColumns();
+                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
     }
