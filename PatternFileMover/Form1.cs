@@ -19,6 +19,15 @@ namespace PatternFileMover
 
             dataGridView1.Columns[0].Name = "Dateiname";
             dataGridView1.Columns[0].Width = 773;
+
+            // ensure the existance of the necessary config file
+            if (!File.Exists(NameAssociations.configPath))
+            {
+                // file not found
+                // typically at the first usage of the program
+                // create an empty config file
+                NameAssociations.CreateEmptyConfigFile();
+            }
         }
 
         private void quellverzeichnisAuswählenToolStripMenuItem_Click(object sender, EventArgs e)
