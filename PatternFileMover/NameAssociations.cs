@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
@@ -28,6 +29,11 @@ namespace PatternFileMover
         public static List<NameAssociationsData> LoadFromExistingConfigFile()
         {
             return JsonConvert.DeserializeObject<List<NameAssociationsData>>(File.ReadAllText(Path.GetFullPath(configPath)));
+        }
+
+        public static void WriteByList(List<NameAssociationsData> list)
+        {
+            File.WriteAllText(configPath, JsonConvert.SerializeObject(list));
         }
     }
 }

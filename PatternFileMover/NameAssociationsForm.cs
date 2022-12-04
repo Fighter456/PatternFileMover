@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -41,6 +42,7 @@ namespace PatternFileMover
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Rows[e.RowIndex].ErrorText = String.Empty;
+            button1.Enabled = true;
         }
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -50,6 +52,7 @@ namespace PatternFileMover
                 if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
                 {
                     dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist obligatorisch.";
+                    button1.Enabled = false;
                     e.Cancel = true;
                 }
 
@@ -65,6 +68,7 @@ namespace PatternFileMover
                         )
                     {
                         dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist bereits vorhanden.";
+                        button1.Enabled = false;
                         e.Cancel = true;
                     }
                 }
@@ -74,13 +78,48 @@ namespace PatternFileMover
                 if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
                 {
                     dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist obligatorisch.";
+                    button1.Enabled = false;
                     e.Cancel = true;
                 }
                 else if (!Directory.Exists(e.FormattedValue.ToString())) {
                     dataGridView1.Rows[e.RowIndex].ErrorText = "Der eingebene Pfad existiert nicht.";
+                    button1.Enabled = false;
                     e.Cancel = true;
                 }
             }
+        }
+
+        private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void dataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<NameAssociationsData> nameAssociationsData = new List<NameAssociationsData>();
+            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+            {
+                if (dataGridViewRow.Index == (dataGridView1.Rows.Count -1))
+                {
+                    // skip last row
+                    // does not contain any value because it is used for adding new items
+                    continue;
+                }
+
+                nameAssociationsData.Add(new NameAssociationsData() {
+                   SearchPattern = dataGridViewRow.Cells[0].Value.ToString(),
+                   TargetDirectory = dataGridViewRow.Cells[1].Value.ToString()
+                });
+            }
+
+            NameAssociations.WriteByList(nameAssociationsData);
+
+            button1.Enabled = false;
         }
     }
 }
