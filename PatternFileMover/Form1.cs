@@ -13,12 +13,10 @@ namespace PatternFileMover
         {
             InitializeComponent();
 
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
             dataGridView1.ColumnCount = 1;
             dataGridView1.RowHeadersVisible = false;
 
             dataGridView1.Columns[0].Name = "Dateiname";
-            dataGridView1.Columns[0].Width = 773;
 
             // ensure the existance of the necessary config file
             if (!File.Exists(NameAssociations.configPath))
@@ -46,9 +44,6 @@ namespace PatternFileMover
                 {
                     dataGridView1.Rows.Add(file);
                 }
-
-                dataGridView1.AutoResizeColumns();
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
 
