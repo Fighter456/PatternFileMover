@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PatternFileMover
@@ -15,7 +16,7 @@ namespace PatternFileMover
 
         private void NameAssociationsForm_Load(object sender, EventArgs e)
         {
-            var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile());
+            var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.TargetDirectory).ToList();
             var dataSource = new BindingSource(dataList, null);
 
             dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
