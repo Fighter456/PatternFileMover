@@ -29,7 +29,7 @@ namespace PatternFileMover
             if (e.ColumnIndex == 1)
             {
                 var folderBrowserDialog = new FolderBrowserDialog();
-                folderBrowserDialog.SelectedPath = dataGridView1.SelectedCells[0].Value.ToString();
+                folderBrowserDialog.SelectedPath = dataGridView1.SelectedCells[0].Value?.ToString();
                 DialogResult result = folderBrowserDialog.ShowDialog();
 
                 if (result == DialogResult.OK)
