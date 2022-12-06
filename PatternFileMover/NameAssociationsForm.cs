@@ -16,7 +16,7 @@ namespace PatternFileMover
 
         private void NameAssociationsForm_Load(object sender, EventArgs e)
         {
-            var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.TargetDirectory).ToList();
+            var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.SearchPattern).ToList();
             var dataSource = new BindingSource(dataList, null);
 
             dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
