@@ -66,10 +66,9 @@
             this.ClientSize = new System.Drawing.Size(569, 289);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
-            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NameAssociationsForm";
-            this.Text = "Form2";
+            this.Text = "PatternFileMover - Zuordnungen bearbeiten";
             this.Load += new System.EventHandler(this.NameAssociationsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
