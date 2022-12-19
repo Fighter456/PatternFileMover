@@ -19,6 +19,8 @@ namespace PatternFileMover
             var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.Name).ToList();
             var dataSource = new BindingSource(dataList, null);
 
+            panel1.Controls.Add(dataGridView1);
+
             dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
             dataGridView1.DataSource = dataSource;
             dataGridView1.AutoResizeColumns();
