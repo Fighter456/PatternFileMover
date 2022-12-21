@@ -58,6 +58,11 @@ namespace PatternFileMover
                 if (dataGridView1.Rows.Count > 0)
                 {
                     button1.Visible = true;
+                    button2.Visible = false;
+                }
+                else
+                {
+                    button2.Visible = true;
                 }
             }
         }
@@ -109,7 +114,7 @@ namespace PatternFileMover
             
             DialogResult dialogResult = MessageBox.Show(
                 string.Format(
-                    "Die Verarbeitung ist erfolgt. Es wurde {0} Datei(en) gemäß der Zuordnungen verschoben. Das Programm wird nun beendet.",
+                    "Die Verarbeitung ist erfolgt. Es wurde(n) {0} Datei(en) gemäß der Zuordnung(en) verschoben. Das Programm wird nun beendet.",
                     processedFileCount
                 ),
                 "Verarbeitung abgeschlossen",
