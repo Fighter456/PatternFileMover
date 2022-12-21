@@ -11,6 +11,7 @@ namespace PatternFileMover
         private FolderBrowserDialog sourceFolderBrowserDialog = new FolderBrowserDialog();
         private string sourceDirectory;
         private List<NameAssociationsData> nameAssociations = new List<NameAssociationsData>();
+        private int processedFileCount = 0;
 
         public Form1()
         {
@@ -78,6 +79,8 @@ namespace PatternFileMover
                             dataGridView1.Rows[i].Cells[0].Value.ToString(),
                             data.TargetDirectory + Path.DirectorySeparatorChar + Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
                         );
+
+                        processedFileCount++;
                     }
                 }
 
@@ -105,7 +108,10 @@ namespace PatternFileMover
             progressBar1.Visible = false;
             
             DialogResult dialogResult = MessageBox.Show(
-                "Die Verarbeitung ist erfolgt. Das Programm wird nun beendet.",
+                string.Format(
+                    "Die Verarbeitung ist erfolgt. Es wurde {0} Datei(en) gemäß der Zuordnungen verschoben. Das Programm wird nun beendet.",
+                    processedFileCount
+                ),
                 "Verarbeitung abgeschlossen",
                 MessageBoxButtons.OK
             );
