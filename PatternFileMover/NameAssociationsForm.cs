@@ -28,8 +28,13 @@ namespace PatternFileMover
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex.ToString().Equals("-1"))
+            {
+                return;
+            }
+            
             // equals the column for the target directory
-            if (e.ColumnIndex == 1)
+            if (e.ColumnIndex == 2)
             {
                 var folderBrowserDialog = new FolderBrowserDialog();
                 folderBrowserDialog.SelectedPath = dataGridView1.SelectedCells[0].Value?.ToString();
