@@ -62,6 +62,17 @@ namespace PatternFileMover
                 }
                 else
                 {
+                    result = MessageBox.Show(
+                        "Es wurde ein Verzeichnis ausgewählt, welches keine PDF-Dateien (*.pdf) beinhaltet. Anderes Verzeichnis auswählen?",
+                        "Hinweis: Verzeichnisauswahl",
+                        MessageBoxButtons.YesNo
+                    );
+
+                    if (result == DialogResult.Yes)
+                    {
+                        this.quellverzeichnisAuswählenToolStripMenuItem_Click(sender, e);
+                    }
+
                     button2.Visible = true;
                 }
             }
