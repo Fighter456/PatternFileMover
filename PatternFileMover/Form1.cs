@@ -103,6 +103,25 @@ namespace PatternFileMover
             // load configuration
             this.nameAssociations = NameAssociations.LoadFromExistingConfigFile();
 
+            if (this.nameAssociations.Count == 0)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Es wurden keine Zuordnungen angelegt. Bitte erstellen Sie zuerst mindestens eine Zuordnung. Jetzt Zuordnung anlegen?",
+                    "Hinweis: Keine Zuordnung gefunden",
+                    MessageBoxButtons.YesNo
+                );
+
+                if (result == DialogResult.Yes)
+                {
+                    this.zuordnungenBearbeitenToolStripMenuItem_Click(new object(), new EventArgs());
+                    return;
+                }
+                else
+                {
+                    return;
+                }
+            }
+
             progressBar1.Visible = true;
             button1.Visible = false;
             backgroundWorker1.RunWorkerAsync();
