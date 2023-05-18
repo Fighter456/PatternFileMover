@@ -91,6 +91,30 @@ namespace PatternFileMover
                 {
                     if (dataGridView1.Rows[i].Cells[0].Value.ToString().Contains(data.SearchPattern))
                     {
+                        if (File.Exists(
+                                data.TargetDirectory + 
+                                Path.DirectorySeparatorChar + 
+                                Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                            )
+                        )
+                        {
+                            // delete the existing file before it gets replaced with the current
+                            // processed file
+                            File.Delete(
+                                data.TargetDirectory +
+                                Path.DirectorySeparatorChar +
+                                Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                            );
+                        }
+
+                        if (!Directory.Exists(data.TargetDirectory + Path.DirectorySeparatorChar))
+                        {
+                            // the target directory does not existing
+                            // maybe a broken name association or a network drive is not available
+                            // skip this and go on
+                            continue;
+                        }
+
                         File.Move(
                             dataGridView1.Rows[i].Cells[0].Value.ToString(),
                             data.TargetDirectory + Path.DirectorySeparatorChar + Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
