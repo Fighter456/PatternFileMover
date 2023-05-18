@@ -24,6 +24,12 @@ namespace PatternFileMover
             dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
             dataGridView1.DataSource = dataSource;
             dataGridView1.AutoResizeColumns();
+            dataGridView1.AutoResizeRows();
+
+            if (dataGridView1.Rows.Count > 0)
+            {
+                this.Text = this.Text + " (" + dataGridView1.Rows.Count.ToString() + ")";
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
