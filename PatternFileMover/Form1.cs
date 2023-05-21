@@ -72,8 +72,10 @@ namespace PatternFileMover
                     {
                         this.quellverzeichnisAuswählenToolStripMenuItem_Click(sender, e);
                     }
-
-                    button2.Visible = true;
+                    else
+                    {
+                        button2.Visible = true;
+                    }
                 }
             }
         }
