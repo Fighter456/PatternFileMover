@@ -170,16 +170,27 @@ namespace PatternFileMover
             
             DialogResult dialogResult = MessageBox.Show(
                 string.Format(
-                    "Die Verarbeitung ist erfolgt. Es wurde(n) {0} Datei(en) gemäß der Zuordnung(en) verschoben. Das Programm wird nun beendet.",
+                    "Die Verarbeitung ist erfolgt. Es wurde(n) {0} Datei(en) gemäß der Zuordnung(en) verschoben. Wollen Sie weitere Dateien verarbeiten?",
                     processedFileCount
                 ),
                 "Verarbeitung abgeschlossen",
-                MessageBoxButtons.OK
+                MessageBoxButtons.YesNo
             );
 
-            if (dialogResult == DialogResult.OK)
+            if (dialogResult == DialogResult.No)
             {
-               Application.Exit();
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.Yes)
+            {
+                dataGridView1.Rows.Clear();
+
+                button2.Visible = true;
+                button2.PerformClick();
+            }
+            else {
+                // this should never happen
+                throw new InvalidOperationException();
             }
         }
     }
