@@ -10,7 +10,7 @@ namespace PatternFileMover
     {
         private FolderBrowserDialog sourceFolderBrowserDialog = new FolderBrowserDialog();
         private string sourceDirectory;
-        private List<NameAssociationsData> nameAssociations = new List<NameAssociationsData>();
+        private List<NameAssociationsData_v2> nameAssociations = new List<NameAssociationsData_v2>();
         private int processedFileCount = 0;
 
         public Form1()
@@ -23,12 +23,16 @@ namespace PatternFileMover
             dataGridView1.Columns[0].Name = "Dateiname";
 
             // ensure the existance of the necessary config file
-            if (!File.Exists(NameAssociations.configPath))
+            if (!File.Exists(NameAssociations.configManifestPath))
             {
                 // file not found
                 // typically at the first usage of the program
                 // create an empty config file
                 NameAssociations.CreateEmptyConfigFile();
+            }
+            else
+            {
+                NameAssociations.checkAndUpgradeConfigurationFile();
             }
 
             // background worker
@@ -89,7 +93,7 @@ namespace PatternFileMover
         {   
             for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
             {
-                foreach (NameAssociationsData data in this.nameAssociations)
+                foreach (NameAssociationsData_v2 data in this.nameAssociations)
                 {
                     if (dataGridView1.Rows[i].Cells[0].Value.ToString().Contains(data.SearchPattern))
                     {

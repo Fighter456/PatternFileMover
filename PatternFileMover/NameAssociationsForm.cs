@@ -16,7 +16,7 @@ namespace PatternFileMover
 
         private void NameAssociationsForm_Load(object sender, EventArgs e)
         {
-            var dataList = new BindingList<NameAssociationsData>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.Name).ToList();
+            var dataList = new BindingList<NameAssociationsData_v2>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.Name).ToList();
             var dataSource = new BindingSource(dataList, null);
 
             panel1.Controls.Add(dataGridView1);
@@ -113,7 +113,7 @@ namespace PatternFileMover
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<NameAssociationsData> nameAssociationsData = new List<NameAssociationsData>();
+            List<NameAssociationsData_v2> nameAssociationsData = new List<NameAssociationsData_v2>();
             foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
             {
                 if (dataGridViewRow.Index == (dataGridView1.Rows.Count -1))
@@ -123,10 +123,11 @@ namespace PatternFileMover
                     continue;
                 }
 
-                nameAssociationsData.Add(new NameAssociationsData() {
+                nameAssociationsData.Add(new NameAssociationsData_v2() {
                     Name = dataGridViewRow.Cells[0].Value?.ToString() ?? "",
                     SearchPattern = dataGridViewRow.Cells[1].Value.ToString(),
-                    TargetDirectory = dataGridViewRow.Cells[2].Value.ToString()
+                    TargetDirectory = dataGridViewRow.Cells[2].Value.ToString(),
+                    FileExtension = dataGridViewRow.Cells[3].Value.ToString()
                 });
             }
 

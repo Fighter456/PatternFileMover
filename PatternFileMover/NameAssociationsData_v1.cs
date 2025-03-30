@@ -1,6 +1,9 @@
-﻿namespace PatternFileMover
+﻿using Newtonsoft.Json;
+using System.ComponentModel;
+
+namespace PatternFileMover
 {
-    internal class NameAssociationsData
+    internal class NameAssociationsData_v1
     {
         [System.ComponentModel.DisplayName("Name")]
         public string Name { get; set; }
