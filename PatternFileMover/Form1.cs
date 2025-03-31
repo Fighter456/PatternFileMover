@@ -53,7 +53,7 @@ namespace PatternFileMover
 
                 this.sourceDirectory = sourceFolderBrowserDialog.SelectedPath;
 
-                string[] files = Directory.GetFiles(this.sourceDirectory, "*.pdf");
+                string[] files = Directory.GetFiles(this.sourceDirectory, "*.*");
                 foreach (string file in files)
                 {
                     dataGridView1.Rows.Add(file);
@@ -67,7 +67,7 @@ namespace PatternFileMover
                 else
                 {
                     result = MessageBox.Show(
-                        "Es wurde ein Verzeichnis ausgewählt, welches keine PDF-Dateien (*.pdf) beinhaltet. Anderes Verzeichnis auswählen?",
+                        "Es wurde ein Verzeichnis ausgewählt, welches keine Dateien beinhaltet. Anderes Verzeichnis auswählen?",
                         "Hinweis: Verzeichnisauswahl",
                         MessageBoxButtons.YesNo
                     );
@@ -95,7 +95,20 @@ namespace PatternFileMover
             {
                 foreach (NameAssociationsData_v2 data in this.nameAssociations)
                 {
-                    if (dataGridView1.Rows[i].Cells[0].Value.ToString().Contains(data.SearchPattern))
+                    if (
+                        (
+                            data.FileExtension == "*.*" &&
+                            Path.GetFileNameWithoutExtension(
+                                dataGridView1.Rows[i].Cells[0].Value.ToString()
+                            ).Contains(data.SearchPattern)
+                        ) ||
+                        (
+                           Path.GetFileNameWithoutExtension(
+                               dataGridView1.Rows[i].Cells[0].Value.ToString()
+                           ).Contains(data.SearchPattern) &&
+                           data.FileExtension == Path.GetExtension(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                        )
+                    )
                     {
                         if (!Directory.Exists(data.TargetDirectory + Path.DirectorySeparatorChar))
                         {
