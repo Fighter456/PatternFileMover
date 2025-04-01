@@ -23,6 +23,7 @@ namespace PatternFileMover
 
             dataGridView1.CellValidating += new DataGridViewCellValidatingEventHandler(dataGridView1_CellValidating);
             dataGridView1.DataSource = dataSource;
+            dataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
 
             if (dataGridView1.Rows.Count > 0)
             {
@@ -99,6 +100,30 @@ namespace PatternFileMover
                     e.Cancel = true;
                 }
             }
+            else if (dataGridView1.Columns[e.ColumnIndex].Name.Equals("FileExtension"))
+            {
+                if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
+                {
+                    dataGridView1.Rows[e.RowIndex].SetValues("*.*");
+                }
+                else if (
+                    e.FormattedValue.ToString() != "*.*" &&
+                    e.FormattedValue.ToString().Substring(0, 1) == "*"
+                )
+                {
+                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = e.FormattedValue.ToString().Substring(1);
+                }
+                else if (
+                    e.FormattedValue.ToString().IndexOf(".") == -1
+                ) {
+                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = "." + e.FormattedValue.ToString();
+                }
+            }
+        }
+
+        private void dataGridView1_DefaultValuesNeeded(object sender, System.Windows.Forms.DataGridViewRowEventArgs e)
+        {
+            e.Row.Cells["FileExtension"].Value = "*.*";
         }
 
         private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
