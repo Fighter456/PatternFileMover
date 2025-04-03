@@ -112,11 +112,18 @@ namespace PatternFileMover
                     {
                         if (!Directory.Exists(data.TargetDirectory + Path.DirectorySeparatorChar))
                         {
-                            // the target directory does not existing
-                            // maybe a broken name association or a network drive is not available
-                            // skip this and go on
+                            string warningMessage = $"Warning: Target directory '{data.TargetDirectory}' does not exist. Possible broken name association.";
+
+                            // Log the warning (if there's a logging system)
+                            Console.WriteLine(warningMessage);
+
+                            // Optionally show a message box in the UI
+                            MessageBox.Show(warningMessage, "Missing Directory", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            // Skip and continue processing
                             continue;
                         }
+
 
                         if (File.Exists(
                                 data.TargetDirectory + 
