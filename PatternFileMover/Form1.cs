@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Resources;
 using System.Windows.Forms;
 
 namespace PatternFileMover
@@ -12,6 +13,10 @@ namespace PatternFileMover
         private string sourceDirectory;
         private List<NameAssociationsData_v2> nameAssociations = new List<NameAssociationsData_v2>();
         private int processedFileCount = 0;
+        private ResourceManager i18n = new ResourceManager(
+            "PatternFileMover.Form1",
+            typeof(Form1).Assembly
+        );
 
         public Form1()
         {
@@ -20,7 +25,7 @@ namespace PatternFileMover
             dataGridView1.ColumnCount = 1;
             dataGridView1.RowHeadersVisible = false;
 
-            dataGridView1.Columns[0].Name = "Dateiname";
+            dataGridView1.Columns[0].Name = i18n.GetString("filename");
 
             // ensure the existance of the necessary config file
             if (!File.Exists(NameAssociations.configManifestPath))
@@ -67,8 +72,8 @@ namespace PatternFileMover
                 else
                 {
                     result = MessageBox.Show(
-                        "Es wurde ein Verzeichnis ausgewählt, welches keine Dateien beinhaltet. Anderes Verzeichnis auswählen?",
-                        "Hinweis: Verzeichnisauswahl",
+                        i18n.GetString("sourceFolderEmpty"),
+                        i18n.GetString("sourceFolderEmpty.Title"),
                         MessageBoxButtons.YesNo
                     );
 
@@ -160,8 +165,8 @@ namespace PatternFileMover
             if (this.nameAssociations.Count == 0)
             {
                 DialogResult result = MessageBox.Show(
-                    "Es wurden keine Zuordnungen angelegt. Bitte erstellen Sie zuerst mindestens eine Zuordnung. Jetzt Zuordnung anlegen?",
-                    "Hinweis: Keine Zuordnung gefunden",
+                    i18n.GetString("noAssociations"),
+                    i18n.GetString("noAssociations.Title"),
                     MessageBoxButtons.YesNo
                 );
 
@@ -187,10 +192,10 @@ namespace PatternFileMover
             
             DialogResult dialogResult = MessageBox.Show(
                 string.Format(
-                    "Die Verarbeitung ist erfolgt. Es wurde(n) {0} Datei(en) gemäß der Zuordnung(en) verschoben. Wollen Sie weitere Dateien verarbeiten?",
+                    i18n.GetString("success"),
                     processedFileCount
                 ),
-                "Verarbeitung abgeschlossen",
+                i18n.GetString("success.Title"),
                 MessageBoxButtons.YesNo
             );
 

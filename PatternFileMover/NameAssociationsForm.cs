@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Windows.Forms;
 
 namespace PatternFileMover
 {
     public partial class NameAssociationsForm : Form
     {
+        private ResourceManager i18n = new ResourceManager(
+            "PatternFileMover.NameAssociationsForm",
+            typeof(NameAssociationsForm).Assembly
+        );
+
         public NameAssociationsForm()
         {
             InitializeComponent();
@@ -28,6 +34,10 @@ namespace PatternFileMover
             if (dataGridView1.Rows.Count > 0)
             {
                 this.Text = this.Text + " (" + dataGridView1.Rows.Count.ToString() + ")";
+            }
+            
+            foreach (DataGridViewColumn column in dataGridView1.Columns) {
+                column.HeaderCell.Value = i18n.GetString("grid." + column.Name);
             }
         }
 
@@ -64,7 +74,7 @@ namespace PatternFileMover
             {
                 if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
                 {
-                    dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist obligatorisch.";
+                    dataGridView1.Rows[e.RowIndex].ErrorText = i18n.GetString("grid.Error.Required");
                     button1.Enabled = false;
                     e.Cancel = true;
                 }
@@ -80,7 +90,7 @@ namespace PatternFileMover
                         row.Cells["SearchPattern"].Value.ToString().Equals(e.FormattedValue.ToString())
                         )
                     {
-                        dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist bereits vorhanden.";
+                        dataGridView1.Rows[e.RowIndex].ErrorText = i18n.GetString("grid.Error.Required");
                         button1.Enabled = false;
                         e.Cancel = true;
                     }
@@ -90,12 +100,12 @@ namespace PatternFileMover
             {
                 if (string.IsNullOrEmpty(e.FormattedValue.ToString()))
                 {
-                    dataGridView1.Rows[e.RowIndex].ErrorText = "Dieser Eintrag ist obligatorisch.";
+                    dataGridView1.Rows[e.RowIndex].ErrorText = i18n.GetString("grid.Error.Required");
                     button1.Enabled = false;
                     e.Cancel = true;
                 }
                 else if (!Directory.Exists(e.FormattedValue.ToString())) {
-                    dataGridView1.Rows[e.RowIndex].ErrorText = "Der eingebene Pfad existiert nicht.";
+                    dataGridView1.Rows[e.RowIndex].ErrorText = i18n.GetString("grid.TargetDirectory.Error.NotExists");
                     button1.Enabled = false;
                     e.Cancel = true;
                 }
