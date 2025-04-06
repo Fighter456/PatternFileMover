@@ -118,36 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="quellverzeichnisAuswählenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="selectSourceDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
-  <data name="quellverzeichnisAuswählenToolStripMenuItem.Text" xml:space="preserve">
+  <data name="selectSourceDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Quellverzeichnis auswählen</value>
   </data>
-  <data name="zuordnungenBearbeitenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="editNameAssociationsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>219, 22</value>
   </data>
-  <data name="zuordnungenBearbeitenToolStripMenuItem.Text" xml:space="preserve">
+  <data name="editNameAssociationsToolStripMenuItem.Text" xml:space="preserve">
     <value>Zuordnungen bearbeiten</value>
   </data>
-  <data name="konfigurationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="configurationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>89, 20</value>
   </data>
-  <data name="konfigurationToolStripMenuItem.Text" xml:space="preserve">
+  <data name="configurationToolStripMenuItem.Text" xml:space="preserve">
     <value>Konfiguraton</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="progressBar1.Anchor" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Verarbeiten</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
     <value>Quellverzeichnis auswählen</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
   </data>
   <data name="filename" xml:space="preserve">
     <value>Dateiname</value>

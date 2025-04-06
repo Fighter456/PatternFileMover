@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.konfigurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quellverzeichnisAuswählenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.zuordnungenBearbeitenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configurationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.selectSourceDirectoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ediNameAssociationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.button1 = new System.Windows.Forms.Button();
@@ -45,29 +45,29 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.konfigurationToolStripMenuItem});
+            this.configurationToolStripMenuItem});
             resources.ApplyResources(this.menuStrip1, "menuStrip1");
             this.menuStrip1.Name = "menuStrip1";
             // 
-            // konfigurationToolStripMenuItem
+            // configurationToolStripMenuItem
             // 
-            this.konfigurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.quellverzeichnisAuswählenToolStripMenuItem,
-            this.zuordnungenBearbeitenToolStripMenuItem});
-            this.konfigurationToolStripMenuItem.Name = "konfigurationToolStripMenuItem";
-            resources.ApplyResources(this.konfigurationToolStripMenuItem, "konfigurationToolStripMenuItem");
+            this.configurationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectSourceDirectoryToolStripMenuItem,
+            this.ediNameAssociationsToolStripMenuItem});
+            this.configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
+            resources.ApplyResources(this.configurationToolStripMenuItem, "configurationToolStripMenuItem");
             // 
-            // quellverzeichnisAuswählenToolStripMenuItem
+            // selectSourceDirectoryToolStripMenuItem
             // 
-            this.quellverzeichnisAuswählenToolStripMenuItem.Name = "quellverzeichnisAuswählenToolStripMenuItem";
-            resources.ApplyResources(this.quellverzeichnisAuswählenToolStripMenuItem, "quellverzeichnisAuswählenToolStripMenuItem");
-            this.quellverzeichnisAuswählenToolStripMenuItem.Click += new System.EventHandler(this.quellverzeichnisAuswählenToolStripMenuItem_Click);
+            this.selectSourceDirectoryToolStripMenuItem.Name = "selectSourceDirectoryToolStripMenuItem";
+            resources.ApplyResources(this.selectSourceDirectoryToolStripMenuItem, "selectSourceDirectoryToolStripMenuItem");
+            this.selectSourceDirectoryToolStripMenuItem.Click += new System.EventHandler(this.selectSourceDirectoryToolStripMenuItem_Click);
             // 
-            // zuordnungenBearbeitenToolStripMenuItem
+            // ediNameAssociationsToolStripMenuItem
             // 
-            this.zuordnungenBearbeitenToolStripMenuItem.Name = "zuordnungenBearbeitenToolStripMenuItem";
-            resources.ApplyResources(this.zuordnungenBearbeitenToolStripMenuItem, "zuordnungenBearbeitenToolStripMenuItem");
-            this.zuordnungenBearbeitenToolStripMenuItem.Click += new System.EventHandler(this.zuordnungenBearbeitenToolStripMenuItem_Click);
+            this.ediNameAssociationsToolStripMenuItem.Name = "editNameAssociationsToolStripMenuItem";
+            resources.ApplyResources(this.ediNameAssociationsToolStripMenuItem, "editNameAssociationsToolStripMenuItem");
+            this.ediNameAssociationsToolStripMenuItem.Click += new System.EventHandler(this.editNameAssociationsToolStripMenuItem_Click);
             // 
             // dataGridView1
             // 
@@ -100,7 +100,7 @@
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.quellverzeichnisAuswählenToolStripMenuItem_Click);
+            this.button2.Click += new System.EventHandler(this.selectSourceDirectoryToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -124,10 +124,10 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem konfigurationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quellverzeichnisAuswählenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configurationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem selectSourceDirectoryToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ToolStripMenuItem zuordnungenBearbeitenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ediNameAssociationsToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button button1;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;

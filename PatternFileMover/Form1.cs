@@ -46,7 +46,7 @@ namespace PatternFileMover
             backgroundWorker1.ProgressChanged += new ProgressChangedEventHandler(backgroundWorker1_ProgressChanged);
         }
 
-        private void quellverzeichnisAuswählenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void selectSourceDirectoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             button1.Visible = false;
             DialogResult result = sourceFolderBrowserDialog.ShowDialog();
@@ -79,7 +79,7 @@ namespace PatternFileMover
 
                     if (result == DialogResult.Yes)
                     {
-                        this.quellverzeichnisAuswählenToolStripMenuItem_Click(sender, e);
+                        this.selectSourceDirectoryToolStripMenuItem_Click(sender, e);
                     }
                     else
                     {
@@ -89,7 +89,7 @@ namespace PatternFileMover
             }
         }
 
-        private void zuordnungenBearbeitenToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editNameAssociationsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new NameAssociationsForm().ShowDialog();
         }
@@ -172,7 +172,7 @@ namespace PatternFileMover
 
                 if (result == DialogResult.Yes)
                 {
-                    this.zuordnungenBearbeitenToolStripMenuItem_Click(new object(), new EventArgs());
+                    this.editNameAssociationsToolStripMenuItem_Click(new object(), new EventArgs());
                     return;
                 }
                 else

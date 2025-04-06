@@ -121,22 +121,22 @@
   <data name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
   </data>
-  <data name="quellverzeichnisAuswählenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+  <data name="selectSourceDirectoryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="quellverzeichnisAuswählenToolStripMenuItem.Text" xml:space="preserve">
+  <data name="selectSourceDirectoryToolStripMenuItem.Text" xml:space="preserve">
     <value>Select source folder</value>
   </data>
-  <data name="zuordnungenBearbeitenToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 22</value>
+  <data name="editNameAssociationsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
   </data>
-  <data name="zuordnungenBearbeitenToolStripMenuItem.Text" xml:space="preserve">
+  <data name="editNameAssociationsToolStripMenuItem.Text" xml:space="preserve">
     <value>Edit associations</value>
   </data>
-  <data name="konfigurationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="configurationToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>93, 20</value>
   </data>
-  <data name="konfigurationToolStripMenuItem.Text" xml:space="preserve">
+  <data name="configurationToolStripMenuItem.Text" xml:space="preserve">
     <value>Configuration</value>
   </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
@@ -291,22 +291,22 @@
   <data name="$this.Text" xml:space="preserve">
     <value>PatternFileMover</value>
   </data>
-  <data name="&gt;&gt;konfigurationToolStripMenuItem.Name" xml:space="preserve">
-    <value>konfigurationToolStripMenuItem</value>
+  <data name="&gt;&gt;configurationToolStripMenuItem.Name" xml:space="preserve">
+    <value>configurationToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;konfigurationToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;configurationToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;quellverzeichnisAuswählenToolStripMenuItem.Name" xml:space="preserve">
-    <value>quellverzeichnisAuswählenToolStripMenuItem</value>
+  <data name="&gt;&gt;selectSourceDirectoryToolStripMenuItem.Name" xml:space="preserve">
+    <value>selectSourceDirectoryToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;quellverzeichnisAuswählenToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;selectSourceDirectoryToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;zuordnungenBearbeitenToolStripMenuItem.Name" xml:space="preserve">
-    <value>zuordnungenBearbeitenToolStripMenuItem</value>
+  <data name="&gt;&gt;editNameAssociationsToolStripMenuItem.Name" xml:space="preserve">
+    <value>editNameAssociationsToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;zuordnungenBearbeitenToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;editNameAssociationsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;backgroundWorker1.Name" xml:space="preserve">
@@ -322,25 +322,24 @@
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="filename" xml:space="preserve">
-    <value>Filename</value>
-    <comment>Filename</comment>
+    <value />
   </data>
   <data name="sourceFolderEmpty" xml:space="preserve">
-    <value>You have selected an empty directory. Select a different directory?</value>
+    <value />
   </data>
   <data name="sourceFolderEmpty.Title" xml:space="preserve">
-    <value>Note: Folder selection</value>
+    <value />
   </data>
   <data name="noAssociations" xml:space="preserve">
-    <value>No associations have been created. Please create at least one . Create an association now?</value>
+    <value />
   </data>
   <data name="noAssociations.Title" xml:space="preserve">
-    <value>Note: No association found</value>
+    <value />
   </data>
   <data name="success" xml:space="preserve">
-    <value>Processing has been completed. {0} file(s) have been moved according to the association(s). Do you want to process more files?</value>
+    <value />
   </data>
   <data name="success.Title" xml:space="preserve">
-    <value>Processing completed</value>
+    <value />
   </data>
 </root>
