@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Resources;
@@ -35,7 +37,7 @@ namespace PatternFileMover
             {
                 this.Text = this.Text + " (" + dataGridView1.Rows.Count.ToString() + ")";
             }
-            
+
             foreach (DataGridViewColumn column in dataGridView1.Columns) {
                 column.HeaderCell.Value = i18n.GetString("grid." + column.Name);
             }
@@ -47,7 +49,7 @@ namespace PatternFileMover
             {
                 return;
             }
-            
+
             // equals the column for the target directory
             if (e.ColumnIndex == 2)
             {
@@ -169,6 +171,122 @@ namespace PatternFileMover
             NameAssociations.WriteByList(nameAssociationsData);
 
             button1.Enabled = false;
+        }
+
+        private void checkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            bool brokenAssociationFound = false;
+            bool intactAssociationFound = false;
+
+            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+            {
+                if (dataGridViewRow.Index == (dataGridView1.Rows.Count - 1))
+                {
+                    // skip last row
+                    // does not contain any value because it is used for adding new items
+                    continue;
+                }
+
+                if (Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                {
+                    dataGridViewRow.DefaultCellStyle.BackColor = Color.Green;
+                    intactAssociationFound = true;
+                }
+                else
+                {
+                    dataGridViewRow.DefaultCellStyle.BackColor = Color.Red;
+                    brokenAssociationFound = true;
+                }
+
+                dataGridViewRow.DefaultCellStyle.ForeColor = Color.White;
+            }
+
+            if (brokenAssociationFound || intactAssociationFound)
+            {
+                filterToolStripMenuItem.Visible = true;
+
+                if (brokenAssociationFound)
+                {
+                    brokenAssociationToolStripMenuItem.Visible = true;
+                }
+
+                if (intactAssociationFound)
+                {
+                    intactAssociationToolStripMenuItem.Visible = true;
+                }
+            }
+        }
+
+        private void brokenAssociationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            intactAssociationToolStripMenuItem.Enabled = false;
+            checkToolStripMenuItem.Enabled = false;
+            resetToolStripMenuItem.Enabled = true;
+
+            CurrencyManager currencyManager = (CurrencyManager)BindingContext[dataGridView1.DataSource];
+            currencyManager.SuspendBinding();
+
+            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+            {
+                if (dataGridViewRow.Index == (dataGridView1.Rows.Count - 1))
+                {
+                    // skip last row
+                    // does not contain any value because it is used for adding new items
+                    continue;
+                }
+
+                if (Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                {
+                    dataGridViewRow.Visible = false;
+                }
+            }
+
+            currencyManager.ResumeBinding();
+        }
+
+        private void intactAssociationToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            brokenAssociationToolStripMenuItem.Enabled = false;
+            checkToolStripMenuItem.Enabled = false;
+            resetToolStripMenuItem.Enabled = true;
+
+            CurrencyManager currencyManager = (CurrencyManager)BindingContext[dataGridView1.DataSource];
+            currencyManager.SuspendBinding();
+
+            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+            {
+                if (dataGridViewRow.Index == (dataGridView1.Rows.Count - 1))
+                {
+                    // skip last row
+                    // does not contain any value because it is used for adding new items
+                    continue;
+                }
+
+                if (!Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                {
+                    dataGridViewRow.Visible = false;
+                }
+            }
+
+            currencyManager.ResumeBinding();
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            brokenAssociationToolStripMenuItem.Enabled = true;
+            checkToolStripMenuItem.Enabled = true;
+            intactAssociationToolStripMenuItem.Enabled = true;
+            resetToolStripMenuItem.Enabled = false;
+            
+            CurrencyManager currencyManager = (CurrencyManager)BindingContext[dataGridView1.DataSource];
+            currencyManager.SuspendBinding();
+
+            foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
+            {
+                dataGridViewRow.Visible = true;
+            }
+
+            currencyManager.ResumeBinding();
         }
     }
 }

@@ -117,15 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="actionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Aktion</value>
+  </data>
+  <data name="brokenAssociationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Defekte Zuordnung</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel1.AutoSize" type="System.Resources.ResXNullRef, System.Windows.Forms">
+  <data name="intactAssociationToolStripMenuItem.Size" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
+  </data>
+  <data name="intactAssociationToolStripMenuItem.Text" xml:space="preserve">
+    <value>Intakte Zuordnung</value>
+  </data>
+  <data name="resetToolStripMenuItem.Text" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 22</value>
+  </data>
+  <data name="checkToolStripMenuItem.Text" xml:space="preserve">
+    <value>Prüfen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>PatternFileMover -  Zuordnungen bearbeiten</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Speichern</value>
   </data>
   <data name="grid.Name" xml:space="preserve">
     <value>Name</value>
