@@ -30,10 +30,20 @@ namespace PatternFileMover
             // ensure the existance of the necessary config file
             if (!File.Exists(NameAssociations.configManifestPath))
             {
-                // file not found
-                // typically at the first usage of the program
-                // create an empty config file
-                NameAssociations.CreateEmptyConfigFile();
+                // the manifest file hasn't been found…
+                if (File.Exists(NameAssociations.legacyConfigPath))
+                {
+                    // … but there is a legacy config file
+                    // that means that we need to convert a `v1` config file
+                    NameAssociations.checkAndUpgradeConfigurationFile(true);
+                }
+                else 
+                {
+                    // file not found
+                    // typically at the first usage of the program
+                    // create an empty config file
+                    NameAssociations.CreateEmptyConfigFile();
+                }
             }
             else
             {

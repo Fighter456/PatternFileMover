@@ -37,7 +37,12 @@ namespace PatternFileMover
                     ".json";
         }
 
-        public static void checkAndUpgradeConfigurationFile() {
+        public static void checkAndUpgradeConfigurationFile(bool isV1 = false) {
+            if (isV1 == true)
+            {
+                File.WriteAllText(configManifestPath, "v1");
+            }
+
             string manifestVersion = File.ReadAllText(Path.GetFullPath(configManifestPath));
 
             if (!File.Exists(Path.GetFullPath(GetConfigFilePath())))
@@ -62,6 +67,7 @@ namespace PatternFileMover
                         });
                     }
 
+                    File.WriteAllText(configManifestPath, "v2");
                     WriteByList(convertedValues);
                 }
             }
