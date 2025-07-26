@@ -33,9 +33,13 @@ namespace PatternFileMover
             dataGridView1.DataSource = dataSource;
             dataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
 
-            if (dataGridView1.Rows.Count > 0)
+            if ((dataGridView1.Rows.Count - 1) > 0)
             {
                 this.Text = this.Text + " (" + dataGridView1.Rows.Count.ToString() + ")";
+            }
+            else
+            {
+                actionToolStripMenuItem.Visible = false;
             }
 
             foreach (DataGridViewColumn column in dataGridView1.Columns) {
@@ -68,6 +72,7 @@ namespace PatternFileMover
         {
             dataGridView1.Rows[e.RowIndex].ErrorText = String.Empty;
             button1.Enabled = true;
+            actionToolStripMenuItem.Visible = true;
         }
 
         private void dataGridView1_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
@@ -146,6 +151,12 @@ namespace PatternFileMover
         private void dataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
             button1.Enabled = true;
+
+            if ((dataGridView1.Rows.Count - 1) == 0)
+            {
+                actionToolStripMenuItem.Visible = false;
+                filterToolStripMenuItem.Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
