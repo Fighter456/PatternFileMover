@@ -198,7 +198,7 @@ namespace PatternFileMover
                     continue;
                 }
 
-                if (Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                if (Directory.Exists(dataGridViewRow.Cells[2].Value?.ToString()))
                 {
                     dataGridViewRow.DefaultCellStyle.BackColor = Color.Green;
                     intactAssociationFound = true;
