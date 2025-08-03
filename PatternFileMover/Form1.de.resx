@@ -140,7 +140,7 @@
     <value>Verarbeiten</value>
   </data>
   <data name="button2.Text" xml:space="preserve">
-    <value>Quellverzeichnis auswählen</value>
+    <value>Quellverzeichnis auswählen oder Dateien/Ordner hier ablegen</value>
   </data>
   <data name="filename" xml:space="preserve">
     <value>Dateiname</value>
