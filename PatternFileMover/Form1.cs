@@ -225,5 +225,48 @@ namespace PatternFileMover
                 throw new InvalidOperationException();
             }
         }
+
+        private void button2_onDragDrop(object sender, DragEventArgs e)
+        {
+            if ((e.AllowedEffect & DragDropEffects.Copy) == DragDropEffects.Copy)
+            {
+                var droppedData = ((string[]) e.Data.GetData(DataFormats.FileDrop));
+
+                foreach (var data in droppedData)
+                {
+                    if (File.GetAttributes(data).HasFlag(FileAttributes.Directory))
+                    {
+                        // directory
+                        string[] files = Directory.GetFiles(data, "*.*");
+                        foreach (string file in files)
+                        {
+                            dataGridView1.Rows.Add(file);
+                        }
+                    }
+                    else
+                    {
+                        // file
+                        dataGridView1.Rows.Add(data);
+                    }
+                }
+
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    button1.Visible = true;
+                    button2.Visible = false;
+                }
+            }
+        }
+
+        private void button2_onDragOver(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effect = DragDropEffects.Copy;
+                return;
+            }
+
+            e.Effect = DragDropEffects.None;
+        }
     }
 }

@@ -97,10 +97,13 @@
             // 
             // button2
             // 
+            this.button2.AllowDrop = true;
             resources.ApplyResources(this.button2, "button2");
             this.button2.Name = "button2";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.selectSourceDirectoryToolStripMenuItem_Click);
+            this.button2.DragDrop += new System.Windows.Forms.DragEventHandler(this.button2_onDragDrop);
+            this.button2.DragOver += new System.Windows.Forms.DragEventHandler(this.button2_onDragOver);
             // 
             // Form1
             // 
