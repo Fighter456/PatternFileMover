@@ -20,7 +20,7 @@ namespace PatternFileMover
                 File.WriteAllText(configManifestPath, "v2");
                 File.WriteAllText(GetConfigFilePath(), JsonConvert.SerializeObject(new List<NameAssociationsData_v2>()));
             }
-            catch (System.ArgumentException)
+            catch (ArgumentException)
             {
                 return false;
             }

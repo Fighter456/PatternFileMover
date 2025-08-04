@@ -138,7 +138,7 @@ namespace PatternFileMover
             }
         }
 
-        private void dataGridView1_DefaultValuesNeeded(object sender, System.Windows.Forms.DataGridViewRowEventArgs e)
+        private void dataGridView1_DefaultValuesNeeded(object sender, DataGridViewRowEventArgs e)
         {
             e.Row.Cells["FileExtension"].Value = "*.*";
         }
