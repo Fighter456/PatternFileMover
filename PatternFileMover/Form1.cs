@@ -25,7 +25,7 @@ namespace PatternFileMover
             dataGridView1.ColumnCount = 1;
             dataGridView1.RowHeadersVisible = false;
 
-            dataGridView1.Columns[0].Name = i18n.GetString("filename");
+            dataGridView1.Columns[(int)NameAssociationCellIndex.Name].Name = i18n.GetString("filename");
 
             // ensure the existance of the necessary config file
             if (!File.Exists(NameAssociations.configManifestPath))
@@ -114,14 +114,14 @@ namespace PatternFileMover
                         (
                             data.FileExtension == "*.*" &&
                             Path.GetFileNameWithoutExtension(
-                                dataGridView1.Rows[i].Cells[0].Value.ToString()
+                                dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString()
                             ).Contains(data.SearchPattern)
                         ) ||
                         (
                            Path.GetFileNameWithoutExtension(
                                dataGridView1.Rows[i].Cells[0].Value.ToString()
                            ).Contains(data.SearchPattern) &&
-                           data.FileExtension == Path.GetExtension(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                           data.FileExtension == Path.GetExtension(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
                         )
                     )
                     {
@@ -136,7 +136,7 @@ namespace PatternFileMover
                         if (File.Exists(
                                 data.TargetDirectory + 
                                 Path.DirectorySeparatorChar + 
-                                Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                                Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
                             )
                         )
                         {
@@ -145,13 +145,13 @@ namespace PatternFileMover
                             File.Delete(
                                 data.TargetDirectory +
                                 Path.DirectorySeparatorChar +
-                                Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                                Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
                             );
                         }
 
                         File.Move(
                             dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                            data.TargetDirectory + Path.DirectorySeparatorChar + Path.GetFileName(dataGridView1.Rows[i].Cells[0].Value.ToString())
+                            data.TargetDirectory + Path.DirectorySeparatorChar + Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
                         );
 
                         processedFileCount++;
