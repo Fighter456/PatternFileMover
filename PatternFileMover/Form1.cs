@@ -11,7 +11,7 @@ namespace PatternFileMover
     {
         private FolderBrowserDialog sourceFolderBrowserDialog = new FolderBrowserDialog();
         private string sourceDirectory;
-        private List<NameAssociationsData_v2> nameAssociations = new List<NameAssociationsData_v2>();
+        private List<NameAssociationsData_v3> nameAssociations = new List<NameAssociationsData_v3>();
         private int processedFileCount = 0;
         private ResourceManager i18n = new ResourceManager(
             "PatternFileMover.Form1",
@@ -108,7 +108,7 @@ namespace PatternFileMover
         {   
             for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
             {
-                foreach (NameAssociationsData_v2 data in this.nameAssociations)
+                foreach (NameAssociationsData_v3 data in this.nameAssociations)
                 {
                     if (
                         (

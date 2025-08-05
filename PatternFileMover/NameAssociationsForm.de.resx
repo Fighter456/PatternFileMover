@@ -168,4 +168,10 @@
   <data name="grid.TargetDirectory.Error.NotExists" xml:space="preserve">
     <value>Der eingegebene Pfad existiert nicht.</value>
   </data>
+  <data name="grid.Action" xml:space="preserve">
+    <value>Aktion</value>
+  </data>
+  <data name="grid.Action.Move" xml:space="preserve">
+    <value>Verschieben</value>
+  </data>
 </root>

@@ -24,7 +24,7 @@ namespace PatternFileMover
 
         private void NameAssociationsForm_Load(object sender, EventArgs e)
         {
-            var dataList = new BindingList<NameAssociationsData_v2>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.Name).ToList();
+            var dataList = new BindingList<NameAssociationsData_v3>(NameAssociations.LoadFromExistingConfigFile()).OrderBy(x => x.Name).ToList();
             var dataSource = new BindingSource(dataList, null);
 
             panel1.Controls.Add(dataGridView1);
@@ -55,7 +55,7 @@ namespace PatternFileMover
             }
 
             // equals the column for the target directory
-            if (e.ColumnIndex == 2)
+            if (((DataGridView) sender).Columns[e.ColumnIndex].DataPropertyName == "TargetDirectory")
             {
                 var folderBrowserDialog = new FolderBrowserDialog();
                 folderBrowserDialog.SelectedPath = dataGridView1.SelectedCells[0].Value?.ToString();
@@ -128,12 +128,12 @@ namespace PatternFileMover
                     e.FormattedValue.ToString().Substring(0, 1) == "*"
                 )
                 {
-                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = e.FormattedValue.ToString().Substring(1);
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = e.FormattedValue.ToString().Substring(1);
                 }
                 else if (
                     e.FormattedValue.ToString().IndexOf(".") == -1
                 ) {
-                    dataGridView1.Rows[e.RowIndex].Cells[3].Value = "." + e.FormattedValue.ToString();
+                    dataGridView1.Rows[e.RowIndex].Cells[4].Value = "." + e.FormattedValue.ToString();
                 }
             }
         }
@@ -161,7 +161,7 @@ namespace PatternFileMover
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<NameAssociationsData_v2> nameAssociationsData = new List<NameAssociationsData_v2>();
+            List<NameAssociationsData_v3> nameAssociationsData = new List<NameAssociationsData_v3>();
             foreach (DataGridViewRow dataGridViewRow in dataGridView1.Rows)
             {
                 if (dataGridViewRow.Index == (dataGridView1.Rows.Count -1))
@@ -171,11 +171,14 @@ namespace PatternFileMover
                     continue;
                 }
 
-                nameAssociationsData.Add(new NameAssociationsData_v2() {
+                Console.WriteLine(dataGridViewRow.Cells);
+
+                nameAssociationsData.Add(new NameAssociationsData_v3() {
                     Name = dataGridViewRow.Cells[0].Value?.ToString() ?? "",
                     SearchPattern = dataGridViewRow.Cells[1].Value.ToString(),
-                    TargetDirectory = dataGridViewRow.Cells[2].Value.ToString(),
-                    FileExtension = dataGridViewRow.Cells[3].Value.ToString()
+                    Action = AvailableActions.Move,
+                    TargetDirectory = dataGridViewRow.Cells[3].Value.ToString(),
+                    FileExtension = dataGridViewRow.Cells[4].Value.ToString()
                 });
             }
 
@@ -198,7 +201,7 @@ namespace PatternFileMover
                     continue;
                 }
 
-                if (Directory.Exists(dataGridViewRow.Cells[2].Value?.ToString()))
+                if (Directory.Exists(dataGridViewRow.Cells[3].Value?.ToString()))
                 {
                     dataGridViewRow.DefaultCellStyle.BackColor = Color.Green;
                     intactAssociationFound = true;
@@ -246,7 +249,7 @@ namespace PatternFileMover
                     continue;
                 }
 
-                if (Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                if (Directory.Exists(dataGridViewRow.Cells[3].Value.ToString()))
                 {
                     dataGridViewRow.Visible = false;
                 }
@@ -273,7 +276,7 @@ namespace PatternFileMover
                     continue;
                 }
 
-                if (!Directory.Exists(dataGridViewRow.Cells[2].Value.ToString()))
+                if (!Directory.Exists(dataGridViewRow.Cells[3].Value.ToString()))
                 {
                     dataGridViewRow.Visible = false;
                 }

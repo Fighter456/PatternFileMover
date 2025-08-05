@@ -54,27 +54,48 @@ namespace PatternFileMover
                 if (File.Exists(Path.GetFullPath(legacyConfigPath)))
                 {
                     List<NameAssociationsData_v1> legacyValues = LoadFromExistingConfigFile_v1(legacyConfigPath);
-                    List<NameAssociationsData_v2> convertedValues = new List<NameAssociationsData_v2>();
+                    List<NameAssociationsData_v3> convertedValues = new List<NameAssociationsData_v3>();
 
                     foreach (NameAssociationsData_v1 value in legacyValues) {
-                        convertedValues.Add(new NameAssociationsData_v2()
+                        convertedValues.Add(new NameAssociationsData_v3()
                         {
                             Name = value.Name,
                             SearchPattern = value.SearchPattern,
+                            Action = AvailableActions.Move,
                             TargetDirectory = value.TargetDirectory,
                             // version 1 only allows the processing of .pdf files
                             FileExtension = ".pdf"
                         });
                     }
 
-                    File.WriteAllText(configManifestPath, "v2");
+                    File.WriteAllText(configManifestPath, "v3");
                     WriteByList(convertedValues);
                 }
             }
+            else
+            {
+                List<NameAssociationsData_v2> upgradableValues = LoadFromExistingConfigFile_v2(Path.GetFullPath(GetConfigFilePath()));
+                List<NameAssociationsData_v3> convertedValues = new List<NameAssociationsData_v3>();
+
+                foreach (NameAssociationsData_v2 value in upgradableValues)
+                {
+                    convertedValues.Add(new NameAssociationsData_v3()
+                    {
+                        Name = value.Name,
+                        SearchPattern = value.SearchPattern,
+                        Action = AvailableActions.Move,
+                        TargetDirectory = value.TargetDirectory,
+                        FileExtension = value.FileExtension,
+                    });
+                }
+
+                File.WriteAllText(configManifestPath, "v3");
+                WriteByList(convertedValues);
+            }
         }
 
-        public static List<NameAssociationsData_v2> LoadFromExistingConfigFile() {
-            return LoadFromExistingConfigFile_v2();
+        public static List<NameAssociationsData_v3> LoadFromExistingConfigFile() {
+            return LoadFromExistingConfigFile_v3();
         }
 
         public static List<NameAssociationsData_v1> LoadFromExistingConfigFile_v1(string path = "")
@@ -97,7 +118,17 @@ namespace PatternFileMover
             return JsonConvert.DeserializeObject<List<NameAssociationsData_v2>>(File.ReadAllText(Path.GetFullPath(path)));
         }
 
-        public static void WriteByList(List<NameAssociationsData_v2> list)
+        public static List<NameAssociationsData_v3> LoadFromExistingConfigFile_v3(string path = "")
+        {
+            if (String.IsNullOrEmpty(path))
+            {
+               path = GetConfigFilePath();
+            }
+
+            return JsonConvert.DeserializeObject<List<NameAssociationsData_v3>>(File.ReadAllText(Path.GetFullPath(path)));
+        }
+
+        public static void WriteByList(List<NameAssociationsData_v3> list)
         {
             File.WriteAllText(
                 GetConfigFilePath(),

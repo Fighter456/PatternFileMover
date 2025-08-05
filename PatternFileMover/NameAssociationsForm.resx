@@ -357,4 +357,10 @@
   <data name="grid.TargetDirectory.Error.NotExists" xml:space="preserve">
     <value>The entered path does not exists.</value>
   </data>
+  <data name="grid.Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="grid.Action.Move" xml:space="preserve">
+    <value>Move</value>
+  </data>
 </root>
