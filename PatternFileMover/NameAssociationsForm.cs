@@ -66,6 +66,23 @@ namespace PatternFileMover
                     dataGridView1.SelectedCells[0].Value = folderBrowserDialog.SelectedPath;
                 }
             }
+            else if (((DataGridView)sender).Columns[e.ColumnIndex].DataPropertyName == "Action")
+            {
+                using (var actionSelectForm = new Form2())
+                {
+                    actionSelectForm.ShowDialog();
+
+                    if (actionSelectForm.DialogResult == DialogResult.OK) { 
+                        if (actionSelectForm.getValue(true, dataGridView1.SelectedCells[0].Value.ToString()) != null)
+                        {
+                            dataGridView1.SelectedCells[0].Value = actionSelectForm.getValue(
+                                true,
+                                dataGridView1.SelectedCells[0].Value.ToString()
+                            );
+                        }
+                    }
+                }
+            }
         }
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)

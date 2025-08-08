@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Reflection;
@@ -11,6 +12,43 @@ namespace PatternFileMover
     {
         [Description("grid.Action.Move")]
         Move = 0,
+    }
+
+    public class AvailableAction
+    {
+        public AvailableAction() { }
+
+        public string DisplayName { get; set; }
+        public string Value { get; set; }
+    }
+
+    public class AvailableActionItems
+    {
+       public static List<AvailableAction> getAvailableActions()
+        {
+            var i18n = new ResourceManager(
+                "PatternFileMover.NameAssociationsForm",
+                typeof(NameAssociationsForm).Assembly
+            );
+
+            List<AvailableAction> availableActions = new List<AvailableAction>();
+            foreach (AvailableActions action in (AvailableActions[])Enum.GetValues(typeof(AvailableActions)))
+            {
+                var actionName = (new EnumDescriptionTypeConverter(typeof(AvailableAction))).ConvertTo(
+                    null,
+                    CultureInfo.CurrentUICulture,
+                    action,
+                    typeof(string)
+                );
+
+                availableActions.Add(new AvailableAction() { 
+                    DisplayName = actionName.ToString(),
+                    Value = ((int)action).ToString() }
+                );
+            }
+
+            return availableActions;
+        }
     }
 
     class EnumDescriptionTypeConverter : EnumConverter
