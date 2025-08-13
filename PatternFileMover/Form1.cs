@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PatternFileMover.Action;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -105,58 +106,24 @@ namespace PatternFileMover
         }
 
         void backgroundWorker1_DoWork(object sender, DoWorkEventArgs eventArgs)
-        {   
+        {
+            var types = AbstractAction.GetActions();
+
             for (int i = 0; i <= dataGridView1.RowCount - 1; i++)
             {
-                foreach (NameAssociationsData_v3 data in this.nameAssociations)
+                var processed = false;
+
+                foreach (var type in types)
                 {
-                    if (
-                        (
-                            data.FileExtension == "*.*" &&
-                            Path.GetFileNameWithoutExtension(
-                                dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString()
-                            ).Contains(data.SearchPattern)
-                        ) ||
-                        (
-                           Path.GetFileNameWithoutExtension(
-                               dataGridView1.Rows[i].Cells[0].Value.ToString()
-                           ).Contains(data.SearchPattern) &&
-                           data.FileExtension == Path.GetExtension(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
-                        )
-                    )
-                    {
-                        if (!Directory.Exists(data.TargetDirectory + Path.DirectorySeparatorChar))
-                        {
-                            // the target directory does not existing
-                            // maybe a broken name association or a network drive is not available
-                            // skip this and go on
-                            continue;
-                        }
+                    string[] classParts = type.FullName.Split('.');
+                    var action = Activator.CreateInstance(Type.GetType(classParts[0] + "." + classParts[1] + "." + classParts[2]));
 
-                        if (File.Exists(
-                                data.TargetDirectory + 
-                                Path.DirectorySeparatorChar + 
-                                Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
-                            )
-                        )
-                        {
-                            // delete the existing file before it gets replaced with the current
-                            // processed file
-                            File.Delete(
-                                data.TargetDirectory +
-                                Path.DirectorySeparatorChar +
-                                Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
-                            );
-                        }
-
-                        File.Move(
-                            dataGridView1.Rows[i].Cells[0].Value.ToString(),
-                            data.TargetDirectory + Path.DirectorySeparatorChar + Path.GetFileName(dataGridView1.Rows[i].Cells[(int)NameAssociationCellIndex.Name].Value.ToString())
-                        );
-
-                        processedFileCount++;
-                    }
+                    AbstractAction abstractAction = (AbstractAction)action;
+                    abstractAction.SetCurrent(dataGridView1.Rows[i]);
+                    processed = abstractAction.ExecuteAction();
                 }
+
+                if (processed) processedFileCount++;
 
                 backgroundWorker1.ReportProgress(100 * i / dataGridView1.RowCount);
             }
@@ -169,7 +136,6 @@ namespace PatternFileMover
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // load configuration
             this.nameAssociations = NameAssociations.LoadFromExistingConfigFile();
 
             if (this.nameAssociations.Count == 0)
