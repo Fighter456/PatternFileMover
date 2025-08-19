@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
 
 namespace PatternFileMover.Action
@@ -25,7 +24,10 @@ namespace PatternFileMover.Action
 
         public override bool Matches(DataGridViewRow row)
         {
-            base.Matches(row);
+            if (!base.Matches(row))
+            {
+                return false;
+            }
 
             if (
                     (
