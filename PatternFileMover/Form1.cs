@@ -121,6 +121,11 @@ namespace PatternFileMover
                     AbstractAction abstractAction = (AbstractAction)action;
                     abstractAction.SetCurrent(dataGridView1.Rows[i]);
                     processed = abstractAction.ExecuteAction();
+
+                    if (processed)
+                    {
+                        break;
+                    }
                 }
 
                 if (processed) processedFileCount++;
