@@ -17,8 +17,8 @@ namespace PatternFileMover
         {
             try
             {
-                File.WriteAllText(configManifestPath, "v2");
-                File.WriteAllText(GetConfigFilePath(), JsonConvert.SerializeObject(new List<NameAssociationsData_v2>()));
+                File.WriteAllText(configManifestPath, "v3");
+                File.WriteAllText(GetConfigFilePath(), JsonConvert.SerializeObject(new List<NameAssociationsData_v3>()));
             }
             catch (ArgumentException)
             {
@@ -44,6 +44,10 @@ namespace PatternFileMover
             }
 
             string manifestVersion = File.ReadAllText(Path.GetFullPath(configManifestPath));
+            if (manifestVersion == "v3")
+            {
+                return;
+            }
 
             if (!File.Exists(Path.GetFullPath(GetConfigFilePath())))
             { 
