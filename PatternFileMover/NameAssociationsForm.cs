@@ -191,7 +191,7 @@ namespace PatternFileMover
                 nameAssociationsData.Add(new NameAssociationsData_v3() {
                     Name = dataGridViewRow.Cells[(int)NameAssociationCellIndex.Name].Value?.ToString() ?? "",
                     SearchPattern = dataGridViewRow.Cells[(int)NameAssociationCellIndex.SearchPattern].Value.ToString(),
-                    Action = AvailableActions.Move,
+                    Action = (AvailableActions) dataGridViewRow.Cells[(int)NameAssociationCellIndex.Action].Value,
                     TargetDirectory = dataGridViewRow.Cells[(int)NameAssociationCellIndex.TargetDirectory].Value.ToString(),
                     FileExtension = dataGridViewRow.Cells[(int)NameAssociationCellIndex.FileExension].Value.ToString()
                 });
