@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Resources;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace PatternFileMover
@@ -33,17 +34,30 @@ namespace PatternFileMover
             dataGridView1.DataSource = dataSource;
             dataGridView1.DefaultValuesNeeded += dataGridView1_DefaultValuesNeeded;
 
+            OnModifiedDataSource();
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Value = i18n.GetString("grid." + column.Name);
+            }
+        }
+
+        private void OnModifiedDataSource()
+        {
+            this.Text = Regex.Replace(
+                this.Text,
+                @" \((\d)\)",
+                String.Empty
+            );
+
             if ((dataGridView1.Rows.Count - 1) > 0)
             {
-                this.Text = this.Text + " (" + dataGridView1.Rows.Count.ToString() + ")";
+                this.Text = this.Text + " (" + (dataGridView1.Rows.Count - 1).ToString() + ")";
             }
             else
             {
                 actionToolStripMenuItem.Visible = false;
-            }
-
-            foreach (DataGridViewColumn column in dataGridView1.Columns) {
-                column.HeaderCell.Value = i18n.GetString("grid." + column.Name);
+                filterToolStripMenuItem.Visible = false;
             }
         }
 
@@ -162,18 +176,16 @@ namespace PatternFileMover
 
         private void dataGridView1_UserAddedRow(object sender, DataGridViewRowEventArgs e)
         {
+            this.OnModifiedDataSource();
+
             button1.Enabled = true;
         }
 
         private void dataGridView1_UserDeletedRow(object sender, DataGridViewRowEventArgs e)
         {
-            button1.Enabled = true;
+            this.OnModifiedDataSource();
 
-            if ((dataGridView1.Rows.Count - 1) == 0)
-            {
-                actionToolStripMenuItem.Visible = false;
-                filterToolStripMenuItem.Visible = false;
-            }
+            button1.Enabled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
