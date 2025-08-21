@@ -12,6 +12,8 @@ namespace PatternFileMover
     {
         [Description("grid.Action.Move")]
         Move = 0,
+        [Description("grid.Action.Copy")]
+        Copy = 1,
     }
 
     public class AvailableAction

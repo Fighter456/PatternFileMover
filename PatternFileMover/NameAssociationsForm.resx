@@ -363,4 +363,7 @@
   <data name="grid.Action.Move" xml:space="preserve">
     <value>Move</value>
   </data>
+  <data name="grid.Action.Copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
 </root>
