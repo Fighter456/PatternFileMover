@@ -7,13 +7,20 @@ namespace PatternFileMover.Action
     {
         public bool DoCopy()
         {
-            File.Copy(
-                this.GetSourcePath(),
-                this.GetTargetPath() +
-                    Path.DirectorySeparatorChar +
-                    Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString()
-                )
-            );
+            try
+            {
+                File.Copy(
+                    this.GetSourcePath(),
+                    this.GetTargetPath() +
+                        Path.DirectorySeparatorChar +
+                        Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString()
+                    )
+                );
+            }
+            catch (IOException)
+            {
+                return false;
+            }
 
             return true;
         }
