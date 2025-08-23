@@ -177,4 +177,7 @@
   <data name="grid.Action.Copy" xml:space="preserve">
     <value>Kopieren</value>
   </data>
+  <data name="grid.Action.CopyOverwrite" xml:space="preserve">
+    <value>Kopieren (Überschreiben)</value>
+  </data>
 </root>

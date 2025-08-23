@@ -366,4 +366,7 @@
   <data name="grid.Action.Copy" xml:space="preserve">
     <value>Copy</value>
   </data>
+  <data name="grid.Action.CopyOverwrite" xml:space="preserve">
+    <value>Copy (Overwrite)</value>
+  </data>
 </root>
