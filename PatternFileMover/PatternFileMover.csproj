@@ -54,6 +54,7 @@
     <Compile Include="Action\CopyOverwrite.cs" />
     <Compile Include="Action\IAction.cs" />
     <Compile Include="Action\Move.cs" />
+    <Compile Include="Action\MoveOverwrite.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
     </Compile>
