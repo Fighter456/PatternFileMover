@@ -6,13 +6,19 @@ namespace PatternFileMover.Action
     internal class Move : AbstractAction
     {
         public bool DoMove() {
-            File.Move(
-                this.GetSourcePath(),
-                this.GetTargetPath() +
-                    Path.DirectorySeparatorChar +
-                    Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString()
-                )
-            );
+            try
+            {
+                File.Move(
+                    this.GetSourcePath(),
+                    this.GetTargetPath() +
+                        Path.DirectorySeparatorChar +
+                        Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString()
+                    )
+                );
+            }
+            catch (IOException) {
+                return false;
+            }
 
             return true;
         }
@@ -51,27 +57,6 @@ namespace PatternFileMover.Action
             }
  
             return false;
-        }
-
-        public override void Prepare()
-        {
-            base.Prepare();
-
-            if (File.Exists(
-                    this.GetTargetPath() +
-                    Path.DirectorySeparatorChar +
-                    Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString())
-                )
-            )
-            {
-                // delete the existing file before it gets replaced with the current
-                // processed file
-                File.Delete(
-                    this.GetTargetPath() +
-                    Path.DirectorySeparatorChar +
-                    Path.GetFileName(this.GetCurrent().Cells[0].Value.ToString())
-                );
-            }
         }
     }
 }
