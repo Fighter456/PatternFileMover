@@ -195,6 +195,8 @@ namespace PatternFileMover
                 // this should never happen
                 throw new InvalidOperationException();
             }
+
+            processedFileCount = 0;
         }
 
         private void button2_onDragDrop(object sender, DragEventArgs e)
