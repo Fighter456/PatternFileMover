@@ -5,13 +5,17 @@ namespace PatternFileMover
 {
     public partial class Form2 : Form
     {
-        public Form2()
+        public Form2(int? currentValue)
         {
             InitializeComponent();
 
             comboBox1.DataSource = AvailableActionItems.getAvailableActions();
             comboBox1.DisplayMember = "DisplayName";
             comboBox1.ValueMember = "Value";
+
+            if (currentValue != null) { 
+                comboBox1.SelectedIndex = (int) currentValue;
+            }
         }
 
         public int? getValue(bool returnNullIfUnchanged = false, string currentValue = "")

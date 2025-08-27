@@ -82,7 +82,7 @@ namespace PatternFileMover
             }
             else if (((DataGridView)sender).Columns[e.ColumnIndex].DataPropertyName == "Action")
             {
-                using (var actionSelectForm = new Form2())
+                using (var actionSelectForm = new Form2((int) dataGridView1.SelectedCells[0]?.Value))
                 {
                     actionSelectForm.ShowDialog();
 
