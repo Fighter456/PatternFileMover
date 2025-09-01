@@ -18,6 +18,8 @@ namespace PatternFileMover
         CopyOverwrite = 2,
         [Description("grid.Action.MoveOverwrite")]
         MoveOverwrite = 3,
+        [Description("grid.Action.Delete")]
+        Delete = 4,
     }
 
     public class AvailableAction

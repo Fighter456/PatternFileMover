@@ -183,4 +183,7 @@
   <data name="grid.Action.MoveOverwrite" xml:space="preserve">
     <value>Verschieben (Überschreiben)</value>
   </data>
+  <data name="grid.Action.Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
 </root>

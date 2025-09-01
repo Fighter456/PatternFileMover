@@ -52,6 +52,7 @@
     <Compile Include="Actions.cs" />
     <Compile Include="Action\Copy.cs" />
     <Compile Include="Action\CopyOverwrite.cs" />
+    <Compile Include="Action\Delete.cs" />
     <Compile Include="Action\IAction.cs" />
     <Compile Include="Action\Move.cs" />
     <Compile Include="Action\MoveOverwrite.cs" />

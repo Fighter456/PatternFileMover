@@ -372,4 +372,7 @@
   <data name="grid.Action.MoveOverwrite" xml:space="preserve">
     <value>Move (Overwrite)</value>
   </data>
+  <data name="grid.Action.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>
